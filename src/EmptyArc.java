@@ -2,8 +2,8 @@
 
 public class EmptyArc extends IncomingArc{
 
-	public EmptyArc(int w, Place p) {
-		super(w, p);
+	public EmptyArc(Place p) {
+		super(0, p);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -14,7 +14,7 @@ public class EmptyArc extends IncomingArc{
 		return false;
 	}
 	
-	public boolean isFirable() {
+	public boolean isFireable() {
 		return true;
 	}
 	

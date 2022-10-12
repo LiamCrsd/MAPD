@@ -3,6 +3,14 @@
 public class Place{
 	private int nbTokens;
 	
+	public Place() {
+		this.nbTokens = 0;
+	}
+	
+	public Place(int i) {
+		this.nbTokens = i;
+	}
+	
 	public void addToken(int nb) {
 		this.nbTokens += nb;
 	}

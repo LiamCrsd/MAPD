@@ -44,7 +44,7 @@ public class Transition{
     int size = this.IncomingArcs.size();
     boolean var = true;
     for(int i = 0; i < size;i++){
-      var = var && (this.IncomingArcs.get(i)).isFirable();
+      var = var && (this.IncomingArcs.get(i)).isFireable();
     }
     return var;
   }
