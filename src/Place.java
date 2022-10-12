@@ -24,4 +24,9 @@ public class Place{
 	public boolean isFireable(int arcWeight) {
 		return nbTokens >= arcWeight;
 	}
+	
+	public int getNbToken() {
+		//Pour tester
+		return this.nbTokens;
+	}
 }
