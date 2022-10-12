@@ -25,6 +25,10 @@ public class Place{
 		return nbTokens >= arcWeight;
 	}
 	
+	public boolean isEmpty() {
+		return this.nbTokens == 0;
+	}
+	
 	public int getNbToken() {
 		//Pour tester
 		return this.nbTokens;

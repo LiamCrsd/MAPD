@@ -11,5 +11,16 @@ public class ZeroArc extends IncomingArc{
 		return true;
 	}
 	
+	public boolean isFireable() {
+		return this.place.isEmpty();
+	}
+	
+	public void fire() {
+		if (this.isFireable()) {
+			//y a pas de pass en java
+			int i =1;
+			i += i;
+		}
+	}
 	
 }
