@@ -12,7 +12,7 @@ public class IncomingArc extends Arc{
 	}
 	
 	public boolean isFirable() {
-		return this.place.isFireable();
+		return this.place.isFireable(this.getWeight());
 	}
 	
 	public boolean isZero() {
