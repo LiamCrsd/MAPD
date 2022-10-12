@@ -15,10 +15,12 @@ public class EmptyArc extends IncomingArc{
 	}
 	
 	public boolean isFireable() {
-		return true;
+		return this.place.isFireable(1);
 	}
 	
 	public void Fire() {
+		if (this.isFireable()) {
 		place.empty();
+		}
 	}
 }
