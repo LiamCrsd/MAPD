@@ -40,7 +40,7 @@ public class Transition{
     return false;
   }
 
-  public boolean isFirable(){
+  public boolean isFireable(){
     int size = this.IncomingArcs.size();
     boolean var = true;
     for(int i = 0; i < size;i++){
@@ -50,7 +50,7 @@ public class Transition{
   }
 
   public void fire(){
-    if (this.isFirable()){
+    if (this.isFireable()){
       int sizeIncoming = this.IncomingArcs.size();
       int sizeOutgoing = this.OutgoingArcs.size();
       for (int i = 0;i < sizeIncoming; i++){
