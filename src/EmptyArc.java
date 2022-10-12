@@ -1,5 +1,5 @@
-package src;
+//package src;
 
-public class EmptyArc{
+public class EmptyArc extends IncomingArc{
   
 }

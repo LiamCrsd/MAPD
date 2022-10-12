@@ -1,5 +1,5 @@
 package src;
 
-public class ZeroArc{
+public class ZeroArc extends IncomingArc{
   
 }
