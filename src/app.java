@@ -19,6 +19,11 @@ public class app {
 		t.addArcOut(a4);
 		t.addArcOut(a5);
 		System.out.println("Etape 1 : " + t.isFireable());
-		
+		p3.addToken(2);
+		p2.subToken(3);
+		p1.addToken(2);
+		System.out.println("Etape 2 : " + t.isFireable());
+		t.fire();
+		System.out.println("Etape 3 : " + p1.getNbToken() + p2.getNbToken() + p3.getNbToken() + p4.getNbToken() + p5.getNbToken());
 	}
 }
