@@ -11,7 +11,7 @@ public class IncomingArc extends Arc{
 		return true;
 	}
 	
-	public boolean isFirable() {
+	public boolean isFireable() {
 		return this.place.isFireable(this.getWeight());
 	}
 	

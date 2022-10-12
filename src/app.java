@@ -1,9 +1,24 @@
 
 public class app {
 
-	public app() {
-		// TODO Auto-generated constructor stub
+	public static void main(String[] args){
+		Place p1 = new Place(2);
+		Place p2 = new Place(3);
+		Place p3 = new Place(0);
+		Place p4 = new Place();
+		Place p5 = new Place();
+		Transition t = new Transition();
+		IncomingArc a1 = new IncomingArc(3,p1);
+		IncomingArc a2 = new ZeroArc(p2);
+		IncomingArc a3 = new EmptyArc(p3);
+		OutgoingArc a4 = new OutgoingArc(2,p4);
+		OutgoingArc a5 = new OutgoingArc(1,p5);
+		t.addArcIn(a1);
+		t.addArcIn(a2);
+		t.addArcIn(a3);
+		t.addArcOut(a4);
+		t.addArcOut(a5);
+		System.out.println("Etape 1 : " + t.isFireable());
 		
 	}
-
 }
