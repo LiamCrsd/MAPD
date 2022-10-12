@@ -1,4 +1,4 @@
-package src;
+//package src;
 
 public class IncomingArc extends Arc{
 
@@ -16,10 +16,10 @@ public class IncomingArc extends Arc{
 	}
 	
 	public boolean isZero() {
-		
+		return false;		
 	}
 	public boolean isEmpty() {
-		
+		return false;
 	}
 	public void Fire() {
 		place.subToken(this.getWeight());

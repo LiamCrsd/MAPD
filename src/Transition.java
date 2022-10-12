@@ -1,6 +1,6 @@
-package src;
+//package src;
 
-import java.utils.List;
+import java.util.ArrayList;
 
 public class Transition{
 
@@ -12,7 +12,7 @@ public class Transition{
     this.OutgoingArcs = new ArrayList<OutgoingArc>();
   }
 
-  public Transition(ArrayList<IncomingArc> incomings, ArrayList<OutgoingArc> outgoing){
+  public Transition(ArrayList<IncomingArc> incomings, ArrayList<OutgoingArc> outgoings){
     this.IncomingArcs = incomings;
     this.OutgoingArcs = outgoings;
   }
@@ -54,11 +54,11 @@ public class Transition{
       int sizeIncoming = this.IncomingArcs.size();
       int sizeOutgoing = this.OutgoingArcs.size();
       for (int i = 0;i < sizeIncoming; i++){
-        (this.IncomingArcs.get(i)).fire()
+        (this.IncomingArcs.get(i)).Fire();
       }
-    }
     for (int i = 0;i < sizeOutgoing; i++){
-      (this.OutgoingArcs.get(i)).fire()
+      (this.OutgoingArcs.get(i)).Fire();
+    }
     }
   }
 

@@ -1,4 +1,4 @@
-package src;
+//package src;
 
 public class Arc{
 	
@@ -19,5 +19,6 @@ public class Arc{
 	}
 	
 	public boolean isIncoming() {
+		return false;
 	}
 }
