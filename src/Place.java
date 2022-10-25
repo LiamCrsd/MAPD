@@ -17,12 +17,13 @@ public class Place{
 	
 	public void subToken(int nb) {
 		if (nb <= 0) {
-			this.nbTokens = 0;
+			//should throw an exception or something
 		} else if (this.nbTokens >= nb) {
 			this.nbTokens -= nb;
 		} else {
 			this.nbTokens = 0;	
 		}
+		
 	}
 	public void empty() {
 		this.nbTokens = 0;
