@@ -38,7 +38,7 @@ public class PetriNet{
 	 t.fire();
  }
 
- public Place CreatePlace(int nbToken = 0) throw NegativeNumberException {
+ public Place CreatePlace(int nbToken = 0) throws NegativeNumberException {
    Place p = new Place(nbToken);
    this.places.add(p);
    return p;
@@ -52,6 +52,9 @@ public class PetriNet{
 
  public IncomingArc CreateIncommingArc(int weight, boolean iszero, boolean isempty, Place p) {
    if (iszero && isempty) {
+     //raise une Exception
+   }
+     else {
      if (iszero) {
        IncomingArc a = new ZeroArc(p);
      } else {
@@ -62,8 +65,6 @@ public class PetriNet{
        }
      }
     }
-
-
- }
+  }
 
 }
