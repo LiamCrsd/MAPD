@@ -49,7 +49,7 @@ public class Transition{
     return var;
   }
 
-  public void fire(){
+  public void fire() throws NegativeNumberException{
     if (this.isFireable()){
       int sizeIncoming = this.IncomingArcs.size();
       int sizeOutgoing = this.OutgoingArcs.size();

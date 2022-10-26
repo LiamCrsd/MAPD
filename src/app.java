@@ -1,7 +1,7 @@
 
 public class app {
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws NegativeNumberException{
 		Place p1 = new Place(2);
 		Place p2 = new Place(3);
 		Place p3 = new Place(0);

@@ -34,7 +34,7 @@ public class PetriNet{
  public boolean isFireable(Transition t) {
 	 return t.isFireable();
  }
- public void Fire(Transition t) {
+ public void Fire(Transition t) throws NegativeNumberException {
 	 t.fire();
  }
  

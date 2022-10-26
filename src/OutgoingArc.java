@@ -11,7 +11,7 @@ public class OutgoingArc extends Arc{
 		return false;
 	}
 	
-	public void Fire() {
+	public void Fire() throws NegativeNumberException {
 		place.addToken(this.getWeight());
 	}
 }

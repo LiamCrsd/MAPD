@@ -11,13 +11,17 @@ public class Place{
 		this.nbTokens = i;
 	}
 	
-	public void addToken(int nb) {
+	public void addToken(int nb) throws NegativeNumberException{
+		if (nb <= 0) {
+			throw new NegativeNumberException("Le nombre de tokens ne peut pas être négatif");
+		}
 		this.nbTokens += nb;
+		
 	}
 	
-	public void subToken(int nb) {
+	public void subToken(int nb) throws NegativeNumberException{
 		if (nb <= 0) {
-			//should throw an exception or something
+			throw new NegativeNumberException("Le nombre de tokens ne peut pas être négatif");
 		} else if (this.nbTokens >= nb) {
 			this.nbTokens -= nb;
 		} else {

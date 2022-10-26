@@ -21,7 +21,7 @@ public class IncomingArc extends Arc{
 	public boolean isEmpty() {
 		return false;
 	}
-	public void Fire() {
+	public void Fire() throws NegativeNumberException {
 		place.subToken(this.getWeight());
 	}
 }
