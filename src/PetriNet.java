@@ -38,10 +38,22 @@ public class PetriNet{
 	 t.fire();
  }
 
- public Place CreatePlace(int nbToken = 0) throws NegativeNumberException {
-   Place p = new Place(nbToken);
-   this.places.add(p);
-   return p;
+   public Place CreatePlace() throws NegativeNumberException {
+     Place p = new Place();
+     this.places.add(p);
+     return p;
+   }
+
+ public Place CreatePlace(int nbToken) throws NegativeNumberException {
+   try {
+     Place p = new Place(nbToken);
+     this.places.add(p);
+     return p;
+    }
+    catch (NegativeNumberException e){
+      e.printStackTrace();
+    }
+
  }
 
  public Transition CreateTransition() {
@@ -65,6 +77,21 @@ public class PetriNet{
        }
      }
     }
+    this.arcs.add(a);
+    return a;
   }
+
+  public IncomingArc CreateZeroArc(Place p) {
+    IncomingArc a = new ZeroArc(p);
+    this.arcs.add(a);
+    return a;
+  }
+
+  public IncomingArc CreateEmptyArc(Place p) {
+    IncomingArc a = new EmptyArc(p);
+    this.arcs.add(a);
+    return a;
+  }
+
 
 }
