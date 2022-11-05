@@ -17,6 +17,14 @@ public class Transition{
     this.OutgoingArcs = outgoings;
   }
 
+  public int getNbArcIn() {
+	  return this.IncomingArcs.size();
+  }
+  
+  public int getNbArcOut() {
+	  return this.OutgoingArcs.size();
+  }
+  
   public void addArcIn(IncomingArc a){
     this.IncomingArcs.add(a);
   }
@@ -25,6 +33,14 @@ public class Transition{
     this.OutgoingArcs.add(a);
   }
 
+  public void addArc(Arc a) {
+	if (a instanceof IncomingArc) {
+		this.addArcIn((IncomingArc) a);
+	} else {
+		this.addArcOut((OutgoingArc) a);
+	}
+  }
+  
   public boolean delArcIn(IncomingArc a){
     if (this.IncomingArcs.contains(a)){
       this.IncomingArcs.remove(a);
@@ -59,6 +75,9 @@ public class Transition{
     for (int i = 0;i < sizeOutgoing; i++){
       (this.OutgoingArcs.get(i)).Fire();
     }
+    }
+    else {
+    	System.out.println("The transition is not fireable");
     }
   }
 

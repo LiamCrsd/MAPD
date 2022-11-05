@@ -2,7 +2,7 @@
 
 public class EmptyArc extends IncomingArc{
 
-	public EmptyArc(Place p) {
+	public EmptyArc(Place p) throws NegativeNumberException {
 		super(0, p);
 		// TODO Auto-generated constructor stub
 	}
