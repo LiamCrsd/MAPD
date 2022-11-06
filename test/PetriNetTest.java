@@ -59,6 +59,13 @@ class PetriNetTest {
 		assert (pn.getNbArcs()==12 && t4p3.getWeight()==1);//CTP6
 		assert (pn.getNbArcs()==12 && pn.getNbPlaces()==5 && pn.getNbTransitions()==4);
 		pn.affichage();
+		//Petite autre serie de test pour verifier que tout marche
+		pn.Fire(T2);
+		assert (T1.isFireable() && T3.isFireable() && !T2.isFireable() && !T4.isFireable());
+		pn.Fire(T3);
+		assert (!T1.isFireable() && !T3.isFireable() && !T2.isFireable() && T4.isFireable());
+		
+		
 	}
 	
 }

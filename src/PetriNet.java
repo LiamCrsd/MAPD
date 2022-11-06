@@ -182,7 +182,7 @@ public class PetriNet{
 	 i = 1;
 	 System.out.println("Liste des transitions :");
 	 for(Transition t : this.transitions) {
-		 System.out.println("  " + i + " : transition avec " + t.getNbArcIn() + " arc entrant et " + t.getNbArcOut() + " arc sortant.");
+		 System.out.println("  " + i + " : transition avec " + t.getNbArcIn() + " arc entrant et " + t.getNbArcOut() + " arc sortant. Fireable : " + t.isFireable());
 		 i++;
 	 }
 	 i = 1;
