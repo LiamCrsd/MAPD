@@ -34,9 +34,13 @@ public class PetriNet{
 	 return t.isFireable();
  }
  
- public void Fire(Transition t) throws NegativeNumberException {
+ public void Fire(Transition t) {
 	 //On est dans le cas fireable donc les exceptions ne peuvent pas arriver 
-	 t.fire();
+	 try {
+		t.fire();
+	} catch (NegativeNumberException e) {
+		// Cas impossible
+	}
  }
 
  public Place CreatePlace(){
@@ -52,8 +56,8 @@ public class PetriNet{
      return p;
     }
     catch (NegativeNumberException e){
-      e.printStackTrace();
-      return null;
+    	System.out.println("\n /!\\ Une place doit avoir un nombre de jetons supérieur à 0\n");
+    	return null;
     }
 
  }
@@ -71,7 +75,7 @@ public class PetriNet{
 		 this.arcs.add(a);
 		 return a;
 	 } catch (NegativeNumberException e) {
-		 e.printStackTrace();
+		 System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 	 }
 	 return null;
   }
@@ -84,7 +88,7 @@ public class PetriNet{
 		 t.addArcIn(a);
 		 return a;
 	 } catch (NegativeNumberException e) {
-		 e.printStackTrace();
+		 System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");;
 	 }
 	 return null;
   }
@@ -96,7 +100,7 @@ public class PetriNet{
 		this.arcs.add(a);
 	    return a;
 	} catch (NegativeNumberException e) {
-		e.printStackTrace();
+		System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 	}
     return null;
   }
@@ -109,7 +113,7 @@ public class PetriNet{
 			t.addArcIn(a);
 		    return a;
 		} catch (NegativeNumberException e) {
-			e.printStackTrace();
+			System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 		}
 	    return null;
 	  }
@@ -121,8 +125,7 @@ public class PetriNet{
 	    this.arcs.add(a);
 	    return a;
 	} catch (NegativeNumberException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 	}
 	return null;
   }
@@ -135,8 +138,7 @@ public class PetriNet{
 		    t.addArcIn(a);
 		    return a;
 		} catch (NegativeNumberException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 		}
 		return null;
 	  }
@@ -148,7 +150,7 @@ public class PetriNet{
 		  this.arcs.add(a);
 		  return a;
 	  } catch (NegativeNumberException e) {
-		  e.printStackTrace();
+		  System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 	  }
 	  return null;
   }
@@ -161,7 +163,7 @@ public class PetriNet{
 		  t.addArcOut(a);
 		  return a;
 	  } catch (NegativeNumberException e) {
-		  e.printStackTrace();
+		  System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 	  }
 	  return null;
  }
