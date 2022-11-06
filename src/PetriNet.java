@@ -155,7 +155,7 @@ public class PetriNet{
 	  return null;
   }
 
- public OutgoingArc CreateOutgoingArc(int w,Place p, Transition t) {
+ public OutgoingArc CreateOutgoingArc(int w,Transition t,Place p) {
 	  OutgoingArc a;
 	  try {
 		  a = new OutgoingArc(w,p);
