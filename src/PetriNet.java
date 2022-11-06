@@ -84,9 +84,14 @@ public class PetriNet{
 	 IncomingArc a;
 	 try {
 		 a = new IncomingArc(weight, p);
-		 this.arcs.add(a);
-		 t.addArcIn(a);
-		 return a;
+		 IncomingArc atemp = t.addArcIn(a);
+		 if (atemp == null) {
+			 this.arcs.add(a);
+			 return a;
+		 }
+		 else {
+			 return atemp;
+		 }
 	 } catch (NegativeNumberException e) {
 		 System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");;
 	 }
@@ -108,10 +113,16 @@ public class PetriNet{
  public IncomingArc CreateZeroArc(Place p, Transition t) {
 	    IncomingArc a;
 		try {
-			a = new ZeroArc(p);
-			this.arcs.add(a);
-			t.addArcIn(a);
-		    return a;
+			a = new ZeroArc(p);	
+			IncomingArc atemp = t.addArcIn(a);
+			if (atemp == null) {
+				this.arcs.add(a);
+				return a;
+			}
+			else {
+				return atemp;
+			}
+		    
 		} catch (NegativeNumberException e) {
 			System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 		}
@@ -134,9 +145,14 @@ public class PetriNet{
 	    IncomingArc a;
 		try {
 			a = new EmptyArc(p);
-		    this.arcs.add(a);
-		    t.addArcIn(a);
-		    return a;
+			IncomingArc atemp = t.addArcIn(a);
+		    if (atemp == null) {
+			    this.arcs.add(a);
+			    return a;
+		    }
+		    else {
+		    	return atemp;
+		    }
 		} catch (NegativeNumberException e) {
 			System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 		}
@@ -166,6 +182,78 @@ public class PetriNet{
 		  System.out.println("\n /!\\ Un arc doit avoir un poids supérieur ou égal à 0\n");
 	  }
 	  return null;
+ }
+ 
+ public void DelArc(Arc a) {
+	 boolean temp = false;
+	 for (Arc atemp : this.arcs) {
+		 if (atemp.equals(a)) {
+			 temp = true;
+			 for (Transition t : this.transitions) {
+				 if (a.isIncoming()) {
+					 t.delArcIn((IncomingArc) a);
+				 }
+				 else {
+					 t.delArcOut((OutgoingArc) a);
+				 }
+			 }
+		 }
+	 }
+	 if (!temp) {
+		 System.out.println("Arc non existant dans le reseau");
+	 }
+	 else {
+		 this.arcs.remove(a);
+	 }
+ }
+
+ public void DelPlace(Place p) {
+	 boolean temp = false;
+	 for (Place ptemp : this.places) {
+		 if (ptemp.equals(p)) {
+			 temp = true;
+			 ArrayList<Arc> adel = new ArrayList<Arc>();
+			 for (Arc a : this.arcs) {
+				 if (a.getPlace().equals(p)) {
+					adel.add(a);
+				 }
+			 }
+			 for (Arc a : adel) {
+				 this.DelArc(a);
+			 }
+		 } 
+	 }
+	 if (!temp) {
+		 System.out.println("Place inconnue");
+	 }
+	 else {
+		 this.places.remove(p);
+	 }
+ }
+
+ public void DelTransition(Transition t) {
+	 boolean temp = false;
+	 for (Transition ttemp : this.transitions) {
+		 if (ttemp.equals(t)) {
+			 temp = true;
+			 ArrayList<Arc> adel = new ArrayList<Arc>();
+			 for (Arc a : t.IncomingArcs) {
+				 adel.add(a);
+			 }
+			 for (Arc a : t.OutgoingArcs) {
+				 adel.add(a);
+			 }
+			 for (Arc a : adel) {
+				 this.DelArc(a);
+			 }
+		 }
+	 }
+	 if (!temp) {
+		 System.out.println("Transition inconnue");
+	 }
+	 else {
+		 this.transitions.remove(t);
+	 }
  }
  
  public void affichage() {

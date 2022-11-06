@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Transition{
 
-  private ArrayList<IncomingArc> IncomingArcs;
-  private ArrayList<OutgoingArc> OutgoingArcs;
+  public ArrayList<IncomingArc> IncomingArcs;
+  public ArrayList<OutgoingArc> OutgoingArcs;
 
   public Transition(){
     this.IncomingArcs = new ArrayList<IncomingArc>();
@@ -25,8 +25,14 @@ public class Transition{
 	  return this.OutgoingArcs.size();
   }
   
-  public void addArcIn(IncomingArc a){
+  public IncomingArc addArcIn(IncomingArc a){
+	for (IncomingArc atemp : this.IncomingArcs) {
+		if (a.getPlace().equals(atemp.getPlace())) {
+			return atemp;
+		}
+	}
     this.IncomingArcs.add(a);
+    return null;
   }
 
   public void addArcOut(OutgoingArc a){

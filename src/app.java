@@ -30,7 +30,8 @@ public class app {
 		System.out.println("-----Creation d'un arc de poids -1 -----");
 		Arc a5 = test.CreateIncommingArc(-1, p3);
 		test.affichage();
-		
+		test.DelPlace(p2);
+		test.affichage();
 	}
 	
 	public static void main(String[] args) throws NegativeNumberException{
