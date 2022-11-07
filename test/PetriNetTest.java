@@ -6,12 +6,12 @@ class PetriNetTest {
 
 	@Test
 	void testMutex() throws NegativeNumberException {
-		// Test référé a la grille de test section 7-2
-		System.out.println("\nTest référé a la grille de test section 7-2\n");
-		
-		// Test de création d'élément, d'un réseau de petri et de la navigabilité 
-		
-		System.out.println("\nTest de création d'élément, d'un réseau de petri et de la navigabilité \n");
+		// Test rï¿½fï¿½rï¿½ a la grille de test section 7-2
+		System.out.println("\nTest rï¿½fï¿½rï¿½ a la grille de test section 7-2\n");
+
+		// Test de crï¿½ation d'ï¿½lï¿½ment, d'un rï¿½seau de petri et de la navigabilitï¿½
+
+		System.out.println("\nTest de crï¿½ation d'ï¿½lï¿½ment, d'un rï¿½seau de petri et de la navigabilitï¿½ \n");
 		PetriNet pn = new PetriNet();
 		assert (pn != null); //CR1
 		Place P1 = pn.CreatePlace(0);
@@ -66,18 +66,18 @@ class PetriNetTest {
 		assert (pn.getNbArcs()==12 && t4p3.getWeight()==1);//CTP6
 		assert (pn.getNbArcs()==12 && pn.getNbPlaces()==5 && pn.getNbTransitions()==4);
 		pn.affichage();
-		
-		//Test de l'activation du réseau de Petri avec transitions a entré simple et multiples
-		
-		System.out.println("\nTest de l'activation du réseau de Petri avec transitions a entré simple et multiples\n");
+
+		//Test de l'activation du rï¿½seau de Petri avec transitions a entrï¿½ simple et multiples
+
+		System.out.println("\nTest de l'activation du rï¿½seau de Petri avec transitions a entrï¿½ simple et multiples\n");
 		pn.Fire(T2);
 		assert (T1.isFireable() && T3.isFireable() && !T2.isFireable() && !T4.isFireable());
 		pn.Fire(T3);
 		assert (!T1.isFireable() && !T3.isFireable() && !T2.isFireable() && T4.isFireable());
-		
-		//Test de déstruction d'élément du réseau de Petri
-		
-		System.out.println("\nTest de déstruction d'élément du réseau de Petri\n");
+
+		//Test de dï¿½struction d'ï¿½lï¿½ment du rï¿½seau de Petri
+
+		System.out.println("\nTest de dï¿½struction d'ï¿½lï¿½ment du rï¿½seau de Petri\n");
 		pn.DelPlace(P3);
 		assert(pn.getNbPlaces()==4 && pn.getNbArcs()==8 && pn.getNbTransitions() == 4);
 		pn.DelPlace(P3);
@@ -91,15 +91,15 @@ class PetriNetTest {
 		pn.DelArc(t2p1);
 		assert(pn.getNbPlaces()==4 && pn.getNbArcs()==5 && pn.getNbTransitions() == 3);
 	}
-	
+
 	@Test
 	void testArcComplexe() throws NegativeNumberException {
-		// Test identique a ceux référé a la grille de test section 7-2 mais avec des arc complexe
-		System.out.println("\nTest référé a la grille de test section 7-2  mais avec des arc complexe\n");
-		
-		// Test de création d'élément, d'un réseau de petri et de la navigabilité 
-		
-		System.out.println("\nTest de création d'élément, d'un réseau de petri et de la navigabilité \n");
+		// Test identique a ceux rï¿½fï¿½rï¿½ a la grille de test section 7-2 mais avec des arc complexe
+		System.out.println("\nTest rï¿½fï¿½rï¿½ a la grille de test section 7-2  mais avec des arc complexe\n");
+
+		// Test de crï¿½ation d'ï¿½lï¿½ment, d'un rï¿½seau de petri et de la navigabilitï¿½
+
+		System.out.println("\nTest de crï¿½ation d'ï¿½lï¿½ment, d'un rï¿½seau de petri et de la navigabilitï¿½ \n");
 		PetriNet pn = new PetriNet();
 		assert (pn != null); //CR1
 		Place P1 = pn.CreatePlace(0);
@@ -150,18 +150,18 @@ class PetriNetTest {
 		assert (pn.getNbArcs()==12);//CTP6
 		assert (pn.getNbArcs()==12 && pn.getNbPlaces()==5 && pn.getNbTransitions()==4);
 		pn.affichage();
-		
-		//Test de l'activation du réseau de Petri avec transitions a entré simple et multiples
-		
-		System.out.println("\nTest de l'activation du réseau de Petri avec transitions a entré simple et multiples\n");
+
+		//Test de l'activation du rï¿½seau de Petri avec transitions a entrï¿½ simple et multiples
+
+		System.out.println("\nTest de l'activation du rï¿½seau de Petri avec transitions a entrï¿½ simple et multiples\n");
 		pn.Fire(T2);
 		assert (T1.isFireable() && T3.isFireable() && !T2.isFireable() && T4.isFireable());
 		pn.Fire(T3);
 		assert (!T1.isFireable() && !T3.isFireable() && !T2.isFireable() && !T4.isFireable());
-		
-		//Test de déstruction d'élément du réseau de Petri
-		
-		System.out.println("\nTest de déstruction d'élément du réseau de Petri\n");
+
+		//Test de dï¿½struction d'ï¿½lï¿½ment du rï¿½seau de Petri
+
+		System.out.println("\nTest de dï¿½struction d'ï¿½lï¿½ment du rï¿½seau de Petri\n");
 		pn.DelPlace(P3);
 		assert(pn.getNbPlaces()==4 && pn.getNbArcs()==8 && pn.getNbTransitions() == 4);
 		pn.DelPlace(P3);
@@ -178,7 +178,85 @@ class PetriNetTest {
 		assert(pn.getNbPlaces()==4 && pn.getNbArcs()==4 && pn.getNbTransitions() == 3);
 	}
 
+	@Test
+	void test73() {
+		// Test rÃ©fÃ©rÃ© a la grille de test section 7-3
+		System.out.println("Test rÃ©fÃ©rÃ© a la grille de test section 7-3\n");
 
-	
-	
+		// Tests avec une seule place
+		System.out.println("Tests avec une seule place\n");
+
+		PetriNet pn = new PetriNet();
+		Transition T = pn.CreateTransition();
+		pn.Fire(T);
+		assert (pn.getNbTransitions() == 1);//RI
+		Place P = pn.CreatePlace();
+		Arc A = pn.CreateIncommingArc(1,P,T);
+		pn.Fire(T);
+		assert (P.getNbToken() == 0);//RD0
+		P.addToken(2);
+		pn.Fire(T);
+		assert (P.getNbToken() == 1);//RD1
+		P.addToken(4);
+		A.modifyWeight(3);
+		pn.Fire(T);
+		assert (P.getNbToken() == 2);//RD2
+		P.subToken(2);
+		pn.Fire(T);
+		assert (!T.isFireable() && P.getNbToken == 0);//RD3
+		pn.DelArc(A);
+		A = pn.CreateOutgoingArc(1,T,P);
+		pn.Fire(T);
+		assert (P.getNbToken()==1);//RG0
+		P.subToken(1);
+		A.modifyWeight(4);
+		pn.Fire(T);
+		assert (P.getNbToken()==4);//RG1
+		P.subToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==7);//RG2
+
+		// Tests avec un arc entrant et sortant
+		System.out.println("Tests avec un arc entrant et sortant\n");
+
+		P.subToken(7);
+		Place P2 = pn.CreatePlace(2);
+		Arc A2 = pn.CreateIncommingArc(1,P2,T);
+		pn.Fire(T);
+		assert (P.getNbToken()==0 && P2.getNbToken()==2);//RM0
+		P.addToken(2);
+		P2.subToken(2);
+		pn.Fire(T);
+		assert (P.getNbToken()==1 && P2.getNbToken()==1);//RM1
+		pn.Fire(T);
+		A.modifyWeight(3);
+		pn.Fire(T);
+		assert (P.getNbToken()==0 && P2.getNbToken()==2);//RM2
+		A.modifyWeight(1);
+		A2.modifyWeight(3);
+		pn.Fire(T);
+		assert (P.getNbToken()==0 && P2.getNbToken()==2);//RM3
+		A.modifyWeight(3);
+		A2.modifyWeight(5);
+		P.addToken(2);
+		P2.subToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==2 && P2.getNbToken()==1);//RM4
+		A2.modifyWeight(1);
+		P.addToken(2);
+		P2.subToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==1 && P2.getNbToken()==1);//RM7
+		A.modifyWeight(1);
+		A2.modifyWeight(5);
+		P.addToken(1);
+		P2.subToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==1 && P2.getNbToken()==5);//RM8
+
+		// Tests Ã  entrÃ©es et sorties multiples
+		System.out.println("Tests Ã  entrÃ©es et sorties multiples\n");
+	}
+
+
 }
