@@ -317,5 +317,23 @@ class PetriNetTest {
 	
 	}
 
-
+	@Test
+	void testArcDouble() {
+		PetriNet pn = new PetriNet();
+		Place P = pn.CreatePlace();
+		Transition T = pn.CreateTransition();
+		Arc A = pn.CreateIncommingArc(1, P, T);
+		Arc A2 = pn.CreateIncommingArc(1, P, T);
+		assert (pn.getNbArcs()==1 && A.equals(A2));
+		pn.DelArc(A);
+		pn.DelArc(A2);
+		A = pn.CreateZeroArc(P, T);
+		A2 = pn.CreateZeroArc(P, T);
+		assert (pn.getNbArcs()==1 && A.equals(A2));
+		pn.DelArc(A);
+		pn.DelArc(A2);
+		A = pn.CreateEmptyArc(P, T);
+		A2 = pn.CreateEmptyArc(P, T);
+		assert (pn.getNbArcs()==1 && A.equals(A2));
+	}
 }

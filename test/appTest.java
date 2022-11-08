@@ -4,7 +4,7 @@ public class appTest {
 	/**
 	 * A class to display a Petri Network
 	 */
-	public static void test1() {
+	public static void TestAffichageTransition() {
 		/**
 		 * creates a Petri Networks and tests the display
 		 * @param no parameters
@@ -44,7 +44,7 @@ public class appTest {
 	}
 
 	public static void main(String[] args) {
-		test1();
+		TestAffichageTransition();
 
 	}
 
