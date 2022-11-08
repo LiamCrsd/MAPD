@@ -179,7 +179,7 @@ class PetriNetTest {
 	}
 
 	@Test
-	void test73() {
+	void test73() throws NegativeNumberException {
 		// Test référé a la grille de test section 7-3
 		System.out.println("Test référé a la grille de test section 7-3\n");
 
@@ -203,7 +203,7 @@ class PetriNetTest {
 		assert (P.getNbToken() == 2);//RD2
 		P.subToken(2);
 		pn.Fire(T);
-		assert (!T.isFireable() && P.getNbToken == 0);//RD3
+		assert (!T.isFireable() && P.getNbToken() == 0);//RD3
 		pn.DelArc(A);
 		A = pn.CreateOutgoingArc(1,T,P);
 		pn.Fire(T);
@@ -217,11 +217,13 @@ class PetriNetTest {
 		assert (P.getNbToken()==7);//RG2
 
 		// Tests avec un arc entrant et sortant
-		System.out.println("Tests avec un arc entrant et sortant\n");
+		System.out.println("Tests avec un arc entrant et sortant 7-3\n");
 
 		P.subToken(7);
 		Place P2 = pn.CreatePlace(2);
-		Arc A2 = pn.CreateIncommingArc(1,P2,T);
+		pn.DelArc(A);
+		A = pn.CreateIncommingArc(1,P,T);
+		Arc A2 = pn.CreateOutgoingArc(1,T,P2);
 		pn.Fire(T);
 		assert (P.getNbToken()==0 && P2.getNbToken()==2);//RM0
 		P.addToken(2);
