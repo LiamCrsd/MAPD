@@ -1,6 +1,14 @@
 
 public class app {
+	/**
+	 * A class to display a Petri Network
+	 */
 	public static void test1() {
+		/**
+		 * creates a Petri Networks and tests the display
+		 * @param no parameters
+		 * @return void
+		 */
 		PetriNet test = new PetriNet();
 		Place p1 = test.CreatePlace(4);
 		Place p2 = test.CreatePlace(0);
@@ -9,7 +17,7 @@ public class app {
 		Arc a2 = test.CreateOutgoingArc(1,t,p2);
 		System.out.println("-----Affichage RdP simple-----");
 		test.affichage();
-		System.out.println("-----Affichage après 1 tir-----");
+		System.out.println("-----Affichage aprï¿½s 1 tir-----");
 		test.Fire(t);
 		test.affichage();
 		System.out.println("-----4 tirs et affichage-----");
