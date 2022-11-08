@@ -258,6 +258,63 @@ class PetriNetTest {
 
 		// Tests à entrées et sorties multiples
 		System.out.println("Tests à entrées et sorties multiples\n");
+		pn.DelArc(A2);
+		pn.DelArc(A);
+		pn.DelPlace(P2);
+		pn.DelPlace(P);
+		P = pn.CreatePlace();
+		P2 = pn.CreatePlace();
+		A = pn.CreateIncommingArc(1, P, T);
+		A2 = pn.CreateIncommingArc(1, P2, T);
+		pn.Fire(T);
+		assert (P.getNbToken()==0 && P2.getNbToken()==0);//RDM1
+		P.addToken(2);
+		pn.Fire(T);
+		assert (P.getNbToken()==2 && P2.getNbToken()==0);//RDM2
+		P2.addToken(2);
+		pn.Fire(T);
+		assert (P.getNbToken()==1 && P2.getNbToken()==1);//RDM3
+		pn.DelArc(A2);
+		pn.DelArc(A);
+		P.subToken(1);
+		P2.subToken(1);
+		A = pn.CreateOutgoingArc(1,T, P);
+		A2 = pn.CreateOutgoingArc(1,T, P2);
+		pn.Fire(T);
+		assert (P.getNbToken()==1 && P2.getNbToken()==1);//RGM0
+		P.addToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==3 && P2.getNbToken()==2);//RGM1
+		Place P3 = pn.CreatePlace();
+		Place P4 = pn.CreatePlace();
+		P.subToken(3);
+		P2.subToken(2);
+		Arc A3 = pn.CreateIncommingArc(1, P3, T);
+		Arc A4 = pn.CreateIncommingArc(1, P4, T);
+		pn.Fire(T);
+		assert (P.getNbToken()==0 && P2.getNbToken()==0 && P3.getNbToken()==0 && P4.getNbToken()==0);//RMM0
+		P3.addToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==0 && P2.getNbToken()==0 && P3.getNbToken()==1 && P4.getNbToken()==0);//RMM1
+		P4.addToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==1 && P2.getNbToken()==1 && P3.getNbToken()==0 && P4.getNbToken()==0);//RMM2
+		P3.addToken(1);
+		P4.addToken(1);
+		P.subToken(1);
+		pn.Fire(T);
+		assert (P.getNbToken()==1 && P2.getNbToken()==2 && P3.getNbToken()==0 && P4.getNbToken()==0);//RMM3
+		P.subToken(1);
+		P2.subToken(2);
+		P3.addToken(1);
+		P4.addToken(1);
+		A3.modifyWeight(4);
+		A4.modifyWeight(2);
+		pn.Fire(T);
+		assert (P.getNbToken()==0 && P2.getNbToken()==0 && P3.getNbToken()==1 && P4.getNbToken()==1);//RMM4
+	
+	
+	
 	}
 
 

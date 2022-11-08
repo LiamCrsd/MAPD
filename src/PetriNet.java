@@ -10,20 +10,11 @@ public class PetriNet{
   private ArrayList<Place> places;
   private ArrayList<Transition> transitions;
   private ArrayList<Arc> arcs;
-  private String name;
 
  public PetriNet(){
     this.places = new ArrayList<Place>();
     this.transitions = new ArrayList<Transition>();
     this.arcs = new ArrayList<Arc>();
-  }
-
- public String getName() {
-	 /**
-	  * Renvoie le nom du réseau
-	  * @return string nom du réseau
-	  */
-	  return this.name;
   }
 
  public int getNbPlaces() {
@@ -113,22 +104,6 @@ public class PetriNet{
    return t;
  }
 
- public IncomingArc CreateIncommingArc(int weight, Place p) {
-	 /**
-	  * Une méthode pour crééer un arc entrant et l'ajouter au réseau
-	  * @param int le poids de la transition, Place la place reliée à l'arc
-	  * @return IncomingArc l'arc créé ou null
-	  */
-	 IncomingArc a;
-	 try {
-		 a = new IncomingArc(weight, p);
-		 this.arcs.add(a);
-		 return a;
-	 } catch (NegativeNumberException e) {
-		 System.out.println("\n /!\\ Un arc doit avoir un poids sup�rieur ou �gal � 0\n");
-	 }
-	 return null;
-  }
 
  public IncomingArc CreateIncommingArc(int weight, Place p, Transition t) {
 	 /**
@@ -153,23 +128,6 @@ public class PetriNet{
 	 return null;
   }
  
- public IncomingArc CreateZeroArc(Place p) {
-	 /**
-	  * Une méthode pour crééer un arc zéro et l'ajouter au réseau
-	  * @param Place la place reliée à l'arc
-	  * @return ZeroArc l'arc créé ou null
-	  */
-    IncomingArc a;
-	try {
-		a = new ZeroArc(p);
-		this.arcs.add(a);
-	    return a;
-	} catch (NegativeNumberException e) {
-		System.out.println("\n /!\\ Un arc doit avoir un poids sup�rieur ou �gal � 0\n");
-	}
-    return null;
-  }
-
  public IncomingArc CreateZeroArc(Place p, Transition t) {
 	 /**
 	  * Une méthode pour crééer un arc zéro et l'ajouter au réseau
@@ -194,22 +152,6 @@ public class PetriNet{
 	    return null;
 	  }
 
- public IncomingArc CreateEmptyArc(Place p) {
-	 /**
-	  * Une méthode pour crééer un arc videur et l'ajouter au réseau
-	  * @param Place la place reliée à l'arc
-	  * @return EmptyArc l'arc créé ou null
-	  */
-    IncomingArc a;
-	try {
-		a = new EmptyArc(p);
-	    this.arcs.add(a);
-	    return a;
-	} catch (NegativeNumberException e) {
-		System.out.println("\n /!\\ Un arc doit avoir un poids sup�rieur ou �gal � 0\n");
-	}
-	return null;
-  }
 
  public IncomingArc CreateEmptyArc(Place p, Transition t) {
 	 /**
@@ -234,23 +176,6 @@ public class PetriNet{
 		return null;
 	  }
  
- public OutgoingArc CreateOutgoingArc(int w,Place p) {
-	 /**
-	  * Une méthode pour crééer un arc sortant et l'ajouter au réseau
-	  * @param int le poids de l'arc, Place la place reliée à l'arc
-	  * @return OutgoingArc l'arc créé ou null
-	  */
-	  OutgoingArc a;
-	  try {
-		  a = new OutgoingArc(w,p);
-		  this.arcs.add(a);
-		  return a;
-	  } catch (NegativeNumberException e) {
-		  System.out.println("\n /!\\ Un arc doit avoir un poids sup�rieur ou �gal � 0\n");
-	  }
-	  return null;
-  }
-
  public OutgoingArc CreateOutgoingArc(int w,Transition t,Place p) {
 	 /**
 	  * Une méthode pour crééer un arc sortant et l'ajouter au réseau
