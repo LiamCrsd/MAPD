@@ -1,13 +1,24 @@
 //package src;
 
 public class Place{
+	/**
+	 * Une classe pour manipuler les places dans un réseau de Pétri
+	 */
 	private int nbTokens;
 
 	public Place() {
+		/**
+		 * Constructeur de place, nombre de jetons 0 par défaut
+		 * @param aucun
+		 */
 		this.nbTokens = 0;
 	}
 
 	public Place(int i) throws NegativeNumberException{
+		/**
+		 * Constructeur de place
+		 * @param int le nombre de jetons
+		 */
 		if (i < 0) {
 			throw new NegativeNumberException("Le nombre de tokens ne peut pas être négatif");
 		}
@@ -15,6 +26,11 @@ public class Place{
 	}
 
 	public void addToken(int nb) throws NegativeNumberException{
+		/**
+		 * Une méthode pour ajouter des jetons à une place existante
+		 * @param int le nombre de jetons à ajouter
+		 * @throws NegativeNumberException
+		 */
 		if (nb < 0) {
 			throw new NegativeNumberException("Le nombre de tokens ajouté ne peut pas être négatif");
 		}
@@ -26,6 +42,12 @@ public class Place{
 	}
 
 	public void subToken(int nb) throws NegativeNumberException{
+		/**
+		 * Une méthode pour retirer des jetons à une place existante
+		 * @param int le nombre de jetons à retirer
+		 * @throws NegativeNumberException
+		 */
+		
 		if (nb < 0) {
 			throw new NegativeNumberException("Le nombre de tokens retiré ne peut pas être négatif");
 		} else if (this.nbTokens >= nb) {
@@ -36,6 +58,9 @@ public class Place{
 
 	}
 	public void empty() {
+		/**
+		 * Une méthode pour vider une place existante de jetons
+		 */
 		this.nbTokens = 0;
 	}
 
@@ -44,6 +69,10 @@ public class Place{
 	}
 
 	public boolean isEmpty() {
+		/** 
+		 * Une méthode pour savoir si la place est vide
+		 * @return boolean
+		 */
 		return this.nbTokens == 0;
 	}
 
