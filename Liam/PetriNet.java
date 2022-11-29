@@ -185,9 +185,14 @@ public class PetriNet{
 	  OutgoingArc a;
 	  try {
 		  a = new OutgoingArc(w,p);
-		  this.arcs.add(a);
-		  t.addArcOut(a);
-		  return a;
+		  OutgoingArc atemp = t.addArcOut(a);
+		  if (atemp == null) {
+			  this.arcs.add(a);
+			  return a;
+		  }
+		  else {
+			  return atemp;
+		  }
 	  } catch (NegativeNumberException e) {
 		  System.out.println("\n /!\\ Un arc doit avoir un poids sup�rieur ou �gal � 0\n");
 	  }

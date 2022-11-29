@@ -34,21 +34,37 @@ public class PetriNetAdapter extends PetriNetInterface{
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
 		
 		try {
+			int counter = this.pn.getNbArcs();
 			Place p = ((PlaceAdapter)source).getPlace();
 			Transition t = ((TransitionAdapter)destination).getTransition();
 			IncomingArc a = this.pn.CreateIncommingArc(1, p, t);
 			IncomingArcAdapter res = new IncomingArcAdapter(a,destination);
+			int counter2 = this.pn.getNbArcs();
+			if (counter == counter2) {
+				throw new DoubleArcException("Arc déjà existant");
+			}
 			return res;	
 		}
-		catch (Exception e) {
+		catch (DoubleArcException e) {
+			throw new UnimplementedCaseException("An arc is already create between this source and destination");
+		}
+		catch (Exception e2) {
 			try {
+				int counter = this.pn.getNbArcs();
 				Place p = ((PlaceAdapter)destination).getPlace();
 				Transition t = ((TransitionAdapter)source).getTransition();
 				OutgoingArc a = this.pn.CreateOutgoingArc(1, t, p);
 				OutgoingArcAdapter res = new OutgoingArcAdapter(a,source);
+				int counter2 = this.pn.getNbArcs();
+				if (counter == counter2) {
+					throw new DoubleArcException("Arc déjà existant");
+				}
 				return res;
 			}
-			catch (Exception e2) {
+			catch (DoubleArcException e) {
+				throw new UnimplementedCaseException("An arc is already create between this source and destination");
+			}
+			catch (Exception eGlobal) {
 				System.out.println("\n \n ATTENTION CA BUG \n \n");
 				throw new UnimplementedCaseException("Je sais pas ca bug");
 			}
@@ -61,13 +77,21 @@ public class PetriNetAdapter extends PetriNetInterface{
 	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
 		 try {
-			 Place p = ((PlaceAdapter)place).getPlace();
-				Transition t = ((TransitionAdapter)transition).getTransition();
-				IncomingArc a = this.pn.CreateZeroArc(p, t);
-				IncomingArcAdapter res = new IncomingArcAdapter(a,transition);
-				return res;		
+			int counter = this.pn.getNbArcs();
+			Place p = ((PlaceAdapter)place).getPlace();
+			Transition t = ((TransitionAdapter)transition).getTransition();
+			IncomingArc a = this.pn.CreateZeroArc(p, t);
+			IncomingArcAdapter res = new IncomingArcAdapter(a,transition);
+			int counter2 = this.pn.getNbArcs();
+			if (counter == counter2) {
+				throw new DoubleArcException("Arc doublé");
+			}
+			return res;		
 		 }
-		 catch (Exception e) {
+		 catch (DoubleArcException e) {
+			 throw new UnimplementedCaseException("An arc is already create between this source and destination");
+		 }
+		 catch (Exception e2) {
 			 throw new UnimplementedCaseException("Je sais pas ca bug inhibitory"); 
 		 }
 		
@@ -77,13 +101,21 @@ public class PetriNetAdapter extends PetriNetInterface{
 	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
 		 try {
-			 Place p = ((PlaceAdapter)place).getPlace();
-				Transition t = ((TransitionAdapter)transition).getTransition();
-				IncomingArc a = this.pn.CreateEmptyArc(p, t);
-				IncomingArcAdapter res = new IncomingArcAdapter(a,transition);
-				return res;		
+			int counter = this.pn.getNbArcs();
+			Place p = ((PlaceAdapter)place).getPlace();
+			Transition t = ((TransitionAdapter)transition).getTransition();
+			IncomingArc a = this.pn.CreateEmptyArc(p, t);
+			IncomingArcAdapter res = new IncomingArcAdapter(a,transition);
+			int counter2 = this.pn.getNbArcs();
+			if (counter == counter2) {
+				throw new DoubleArcException("");
+			}
+			return res;		
 		 }
-		 catch (Exception e) {
+		 catch (DoubleArcException e) {
+			 throw new UnimplementedCaseException("An arc is already create between this source and destination");
+		 }
+		 catch (Exception e2) {
 			 throw new UnimplementedCaseException("Je sais pas ca bug reset"); 
 		 }
 			

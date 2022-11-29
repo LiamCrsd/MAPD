@@ -59,12 +59,18 @@ public class Transition{
     return null;
   }
 
-  public void addArcOut(OutgoingArc a){
+  public OutgoingArc addArcOut(OutgoingArc a){
 	  /**
 	   * Une méthode pour relier un arc sortant existant à la transition
 	   * @param OutgoingArc L'arc sortant à relier
 	   */
+	for (OutgoingArc atemp : this.OutgoingArcs) {
+		if (a.getPlace().equals(atemp.getPlace())) {
+			return atemp;
+		}
+	}
     this.OutgoingArcs.add(a);
+    return null;
   }
 
   public void addArc(Arc a) {
